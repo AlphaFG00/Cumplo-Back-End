@@ -1,9 +1,10 @@
+from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from .serializers import CurrencieSerializer
 import requests,json
-import os
+
 
 
 class CurrenciesListAPIView(APIView):
@@ -11,17 +12,20 @@ class CurrenciesListAPIView(APIView):
 
     def post(self, request):
         serializer = CurrencieSerializer(data=request.data)
-        if serializer.is_valid():
-            currency = serializer.data['currency']
-            banxico_data = self.get_banxico_data(serializer.data, currency)
-            return Response(data=self.get_depurated_data(banxico_data, currency), status=200)
-        else:
-            return Response(data=serializer.errors, status=400)
+        try:
+            if serializer.is_valid():
+                currency = serializer.data['currency']
+                banxico_data = self.get_banxico_data(serializer.data, currency)
+                return Response(data=self.get_depurated_data(banxico_data, currency), status=200)
+            else:
+                return Response(data=serializer.errors, status=400)
+        except Exception as e:
+            return Response(data=e.args[0], status=400)
 
     def get_banxico_data(self, data, currency):
         init_date = data['init_date']
         end_date = data['end_date']
-        headers = {'Bmx-Token': os.getenv('BANXICO_TOKEN')}
+        headers = {'Bmx-Token': settings.BANXICO_TOKEN }
         url = f"https://www.banxico.org.mx/SieAPIRest/service/v1/series/{currency}/datos/{init_date}/{end_date}"
         response = requests.get(url=url, headers=headers).json()
         return response

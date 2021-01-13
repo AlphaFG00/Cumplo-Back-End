@@ -14,3 +14,5 @@ requests==2.25.1
 sqlparse==0.4.1
 urllib3==1.26.2
 urwid==2.1.2
+django-nose==1.4.6
+nose-progressive==1.5.2
