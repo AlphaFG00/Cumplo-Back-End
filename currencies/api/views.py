@@ -37,10 +37,10 @@ class CurrenciesListAPIView(APIView):
             currency_max = max(values)
             return {"average": total ,"min": currency_min, "max": currency_max, "currency_values": depured}
         else:
-            TIIE_1 = response['bmx']['series'][0]['datos']
-            TIIE_2 = response['bmx']['series'][1]['datos']
-            TIIE_3 = response['bmx']['series'][2]['datos']
-            TIIE_4 = response['bmx']['series'][3]['datos']
+            TIIE_1 = data['bmx']['series'][0]['datos']
+            TIIE_2 = data['bmx']['series'][1]['datos']
+            TIIE_3 = data['bmx']['series'][2]['datos']
+            TIIE_4 = data['bmx']['series'][3]['datos']
             return {"T1": TIIE_1, "T2": TIIE_2, "T3":TIIE_3, "T4":TIIE_4}
 
 
