@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  web:
+    restart: always
+    image: web
+    build: ./
+    command: >
+      bash -c " sh vars.sh &&
+               ./manage.py migrate &&
+               ./manage.py runserver 0.0.0.0:8001"
+    volumes:
+      - ./:/code
+    ports:
+      - "8001:8001"
