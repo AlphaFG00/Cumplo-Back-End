@@ -4,9 +4,9 @@ BackEnd para el desafio de Cumplo
 
 # Herramientas y Utilidades Requeridas
 
-- [Docker](https://docs.docker.com/install/)
-- [Docker-Compose](https://docs.docker.com/compose/)
-- [Token de Banxico](https://www.banxico.org.mx/SieAPIRest/service/v1/token)
+- Docker
+- Docker-Compose
+- Token de Banxico
 
 *Nota*
 - Se proporcionara el archivo .env adjunto en el envio del proyecto al destinatario.
@@ -26,7 +26,7 @@ Esperar en promedio 3 minutos y acceder en el navegador a la siguiente ruta:
 http://localhost:8080/
 ```
 
-El proyecto de manera local corre en ```localhost:8000/admin/```, a modo de [produccion](https://cumplo-back-test.herokuapp.com/) se visualiza en ```https://cumplo-back-test.herokuapp.com/```
+El proyecto de manera local corre en ```localhost:8001/admin/```, a modo de [produccion](https://cumplo-app-backend.herokuapp.com/) se visualiza en ```https://cumplo-app-backend.herokuapp.com/```
 
 
 
@@ -58,7 +58,7 @@ end_date         | Fecha final para la busqueda.
 **Ejemplo de Respuesta de la API con USD**:
 
 ```json
-http://localhost:8000/currencies/
+http://localhost:8001/currencies/
 Content-Type application/json
 200 Ok
 {
@@ -94,7 +94,7 @@ Content-Type application/json
 
 
 ```json
-http://localhost:8000/currencies/
+http://localhost:8001/currencies/
 Content-Type application/json
 200 Ok
 {
@@ -145,7 +145,7 @@ Content-Type application/json
 
 
 ```json
-http://localhost:8000/currencies/
+http://localhost:8001/currencies/
 Content-Type application/json
 200 Ok
 {
