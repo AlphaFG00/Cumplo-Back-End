@@ -6,7 +6,7 @@ services:
     image: web
     build: ./
     command: >
-      bash -c " sh vars.sh &&
+      bash -c " source vars.sh &&
                ./manage.py migrate &&
                ./manage.py runserver 0.0.0.0:8001"
     volumes:
